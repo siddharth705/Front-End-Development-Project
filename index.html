@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+       body {
+           margin: 0;
+           padding: 0;
+           font-family: Arial, sans-serif;
+       }
+       header {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           padding: 20px;
+           background-color: #333;
+           color: #fff;
+       }
+       .brand {
+           display: flex;
+           align-items: center;
+       }
+       .brand img {
+           max-height: 40px;
+           margin-right: 10px;
+       }
+       nav {
+           display: flex;
+       }
+       nav ul {
+           list-style-type: none;
+           display: flex;
+           margin: 0;
+           padding: 0;
+       }
+       nav ul li {
+           margin-right: 20px;
+           position: relative;
+       }
+       nav ul li:hover ul {
+           display: block;
+       }
+       nav ul ul {
+           display: none;
+           position: absolute;
+           top: 100%;
+           left: 0;
+           background-color: #333;
+       }
+       nav ul ul li {
+           width: 100%;
+           white-space: nowrap;
+       }
+       nav a {
+           text-decoration: none;
+           color: #fff;
+       }
+       .background-image {
+           background-image: url('logo-white.png');
+           background-size: cover;
+           background-position: center;
+           height: 90vh;
+           display: flex;
+		   opacity: 0.6;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           color: #fff;		   
+       }
+       .heading1 {
+           font-size: 24px;
+           margin-bottom: 10px;
+		   padding-top: 10px;
+       }
+       .heading2 {
+           font-size: 36px;
+           margin-bottom: 10px;
+           animation: changeText 5s infinite;
+       }
+       .button {
+           padding: 10px 20px;
+           background-color: #fff;
+           color: #333;
+           text-decoration: none;
+           border-radius: 5px;
+           font-weight: bold;
+       }
+       @keyframes changeText {
+           0%, 100% {
+               opacity: 1;
+           }
+           25%, 75% {
+               opacity: 0;
+           }
+       }
+	   .row {
+           display: flex;
+           width: 100%;
+       }
+       .image-section {
+           width: 50%;
+           overflow: hidden;
+       }
+       .image-section img {
+           width: 100%;
+           height: auto;
+       }
+       .form-section {
+           width: 50%;
+           padding: 20px;
+           box-sizing: border-box;
+       }
+       form {
+           display: flex;
+           flex-direction: column;
+       }
+       label {
+           margin-bottom: 8px;
+       }
+       input, select, textarea {
+           margin-bottom: 16px;
+           padding: 10px;
+           box-sizing: border-box;
+       }
+       input[type="date"] {
+           width: 100%;
+       }
+       textarea {
+           resize: vertical;
+		   
+       }
+       button {
+           padding: 10px;
+           background-color: black;
+           color: #fff;
+           border: none;
+           cursor: pointer;
+       }
+	   .package-gallery {
+           display: flex;
+           flex-wrap: wrap;
+           justify-content: space-around;
+       }
+       .package-card {
+           width: 30%;
+           margin: 20px;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+           border-radius: 8px;
+           overflow: hidden;
+           text-align: center;
+       }
+       .package-card img {
+           width: 100%;
+           height: auto;
+           border-bottom: 1px solid #ddd;
+       }
+       .package-details {
+           padding: 15px;
+       }
+       .package-name {
+           font-size: 18px;
+           font-weight: bold;
+           margin-bottom: 10px;
+       }
+       .package-attraction {
+           margin-bottom: 10px;
+       }
+       .package-price {
+           font-size: 16px;
+           color: #4CAF50;
+           margin-bottom: 5px;
+       }
+       .package-rating {
+           font-size: 14px;
+           color: #888;
+           margin-bottom: 5px;
+       }
+       .book-now-button {
+           padding: 10px;
+           background-color: #4CAF50;
+           color: #fff;
+           border: none;
+           cursor: pointer;
+           border-radius: 5px;
+		}
+		 .services-section {
+           display: flex;
+           flex-wrap: wrap;
+           justify-content: space-around;
+           padding: 30px;
+           background-color: #f9f9f9;
+       }
+       .service-card {
+           width: 30%;
+           margin: 20px;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+           border-radius: 8px;
+           overflow: hidden;
+           text-align: center;
+       }
+       .service-icon {
+           font-size: 40px;
+           margin: 20px 0;
+       }
+       .service-title {
+           font-size: 18px;
+           font-weight: bold;
+           margin-bottom: 10px;
+       }
+       .service-description {
+           margin-bottom: 20px;
+       }
+	    .gallery-section {
+           display: flex;
+           flex-wrap: wrap;
+           justify-content: space-around;
+           padding: 30px;
+           background-color: #f9f9f9;
+       }
+       .gallery-card {
+           width: 30%;
+           margin: 20px;
+           overflow: hidden;
+           border-radius: 8px;
+           transition: transform 0.3s ease-in-out;
+       }
+       .gallery-card img {
+           width: 100%;
+           height: auto;
+           border-radius: 8px;
+       }
+       .gallery-card:hover {
+           transform: scale(1.1);
+       }
+	   .about-us-section {
+           display: flex;
+           width: 100%;
+           padding: 30px;
+           background-color: #f9f9f9;
+       }
+       .image-section {
+           width: 50%;
+           overflow: hidden;
+       }
+       .image-section img {
+           width: 100%;
+           height: auto;
+       }
+       .info-section {
+           width: 50%;
+           padding: 0 20px;
+           box-sizing: border-box;
+       }
+       .company-info {
+           margin-top: 20px;
+       }
+       .company-info h2 {
+           font-size: 24px;
+           margin-bottom: 10px;
+       }
+       .company-info p {
+           font-size: 16px;
+           line-height: 1.6;
+       }
+	   footer {
+           text-align: center;
+           padding: 20px;
+           background-color: #333;
+           color: #fff;
+       }
+       .social-icons {
+           margin-top: 10px;
+       }
+       .social-icons a {
+           display: inline-block;
+           margin: 0 10px;
+           color: #fff;
+           text-decoration: none;
+           font-size: 24px;
+       }
+       .copyright {
+           margin-top: 10px;
+           font-size: 14px;
+       }
+</style>
+<title>TourCraft - Welcome</title>
+</head>
+<body>
+<header>
+<div class="brand">
+<img src="logo-white-2.png" alt="Brand Logo">
+<span>TourCraft</span>
+</div>
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Book</a></li>
+<li>
+<a href="#">Packages</a>
+<ul>
+<li><a href="#">United States</a></li>
+<li><a href="#">India</a></li>
+<li><a href="#">France</a></li>
+<li><a href="#">Germany</a></li>
+<li><a href="#">Russia</a></li>
+<li><a href="#">Italy</a></li>
+</ul>
+</li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Gallery</a></li>
+<li><a href="#">About</a></li>
+</ul>
+</nav>
+<div>
+<a href="login.html" class="button">Login</a>
+<a href="register.html" class="button">Register</a>
+</div>
+</header>
+<div class="background-image">
+<div class="heading1">Welcome to TourCraft</div>
+
+<div class="row">
+<div class="image-section">
+<img src="logo-white-2.png" alt="Brand Image">
+</div>
+<div class="form-section">
+<form id="bookingForm">
+<label for="whereTo">Where to:</label>
+<select id="whereTo" name="whereTo">
+<option value="sample1">United States of America</option>
+<option value="sample2">India</option>
+<option value="sample3">Germany</option>
+<option value="sample4">France</option>
+<option value="sample5">Russia</option>
+<option value="sample6">Italy</option>
+</select>
+<label for="numberOfPersons">How Many Persons:</label>
+<input type="number" id="numberOfPersons" name="numberOfPersons" min="1" required>
+<label for="startDate">Start Date:</label>
+<input type="date" id="startDate" name="startDate" min="2023-01-01" required>
+<label for="endDate">End Date:</label>
+<input type="date" id="endDate" name="endDate" min="2023-01-02" required>
+<label for="description">Description:</label>
+<textarea id="description" name="description" rows="5" minlength="50" maxlength="500" required></textarea>
+<button type="button" onclick="bookNow()">Book Now</button>
+</form>
+</div>
+</div>
+</div>
+<p class="heading1" style = "text-align:center">Packages</p>
+<div class="package-gallery">
+<div class="package-card">
+<img src="india.png" alt="India">
+<div class="package-details">
+<div class="package-name">India</div>
+<div class="package-attraction">Attractions in India</div>
+<div class="package-price">$500</div>
+<div class="package-rating">Rating: 4.5</div>
+<button class="book-now-button">Book Now</button>
+</div>
+</div>
+<div class="package-card">
+<img src="germany.png" alt="Germany">
+<div class="package-details">
+<div class="package-name">Germany</div>
+<div class="package-attraction">Attractions in Germany</div>
+<div class="package-price">$700</div>
+<div class="package-rating">Rating: 4.2</div>
+<button class="book-now-button">Book Now</button>
+</div>
+</div>
+<div class="package-card">
+<img src="US.png" alt="United States of America">
+<div class="package-details">
+<div class="package-name">United States of America</div>
+<div class="package-attraction">Attractions in United States of America</div>
+<div class="package-price">$600</div>
+<div class="package-rating">Rating: 4.8</div>
+<button class="book-now-button">Book Now</button>
+</div>
+</div>
+</div>
+<div class="package-gallery">
+<div class="package-card">
+<img src="france.png" alt="France">
+<div class="package-details">
+<div class="package-name">France</div>
+<div class="package-attraction">Attractions in France</div>
+<div class="package-price">$500</div>
+<div class="package-rating">Rating: 4.5</div>
+<button class="book-now-button">Book Now</button>
+</div>
+</div>
+<div class="package-card">
+<img src="russia.png" alt="Russia">
+<div class="package-details">
+<div class="package-name">Russia</div>
+<div class="package-attraction">Attractions in Russia</div>
+<div class="package-price">$700</div>
+<div class="package-rating">Rating: 4.2</div>
+<button class="book-now-button">Book Now</button>
+</div>
+</div>
+<div class="package-card">
+<img src="Italy.png" alt="Italy">
+<div class="package-details">
+<div class="package-name">Italy</div>
+<div class="package-attraction">Attractions in Italy</div>
+<div class="package-price">$600</div>
+<div class="package-rating">Rating: 4.8</div>
+<button class="book-now-button">Book Now</button>
+</div>
+</div>
+
+</div>
+<p class="heading1" style = "text-align:center">Services</p>
+<div class="services-section">
+<!-- Service 1 -->
+<div class="service-card">
+<div class="service-icon">🏨</div>
+<div class="service-title">Affordable Hotel</div>
+<div class="service-description">Explore budget-friendly accommodation options for a comfortable stay.</div>
+</div>
+<!-- Service 2 -->
+<div class="service-card">
+<div class="service-icon">🍔</div>
+<div class="service-title">Food and Drinks</div>
+<div class="service-description">Enjoy a variety of delicious meals and refreshing beverages during your trip.</div>
+</div>
+<!-- Service 3 -->
+<div class="service-card">
+<div class="service-icon">👷‍♂️</div>
+<div class="service-title">Safety Guide</div>
+<div class="service-description">Ensure a secure journey with our experienced safety guides providing assistance.</div>
+</div>
+<!-- Service 4 -->
+<div class="service-card">
+<div class="service-icon">🚗</div>
+<div class="service-title">Transportation</div>
+<div class="service-description">Convenient and reliable transportation services for hassle-free travel.</div>
+</div>
+<!-- Service 5 -->
+<div class="service-card">
+<div class="service-icon">📷</div>
+<div class="service-title">Photography Services</div>
+<div class="service-description">Capture beautiful moments with our professional photography services.</div>
+</div>
+<!-- Service 6 -->
+<div class="service-card">
+<div class="service-icon">🌐</div>
+<div class="service-title">Online Assistance</div>
+<div class="service-description">24/7 online support to address any queries or concerns you may have.</div>
+</div>
+</div>
+<p class="heading1" style = "text-align:center">Gallery</p>
+<div class="gallery-section">
+<!-- Image 1 -->
+<div class="gallery-card">
+<img src="gal1.png" alt="Gallery Image 1">
+</div>
+<!-- Image 2 -->
+<div class="gallery-card">
+<img src="gal2.png" alt="Gallery Image 2">
+</div>
+<!-- Image 3 -->
+<div class="gallery-card">
+<img src="gal3.png" alt="Gallery Image 3">
+</div>
+<!-- Image 4 -->
+<div class="gallery-card">
+<img src="gal4.png" alt="Gallery Image 4">
+</div>
+<!-- Image 5 -->
+<div class="gallery-card">
+<img src="gal5.png" alt="Gallery Image 5">
+</div>
+<!-- Image 6 -->
+<div class="gallery-card">
+<img src="gal6.png" alt="Gallery Image 6">
+</div>
+</div>
+
+<div class="about-us-section">
+<!-- Image Section -->
+<div class="image-section">
+<img src="logo-white-2.png" alt="Company Image"> <!-- Replace with your company image URL -->
+</div>
+<!-- Information Section -->
+<div class="info-section">
+<div class="company-info">
+<h2>About TourCraft</h2>
+<p>
+                   TourCraft is a leading travel and adventure company committed to providing
+                   exceptional experiences to our customers. Established in 1998, we take pride in
+                   offering affordable and exciting travel packages, quality services, and a dedication
+                   to customer satisfaction.
+</p>
+<p>
+                   Our team of experienced professionals is passionate about creating memorable journeys
+                   and ensuring the safety and enjoyment of every traveler. Discover the world with
+                   TourCraft and embark on unforgettable adventures.
+</p>
+<!-- Add more company information as needed -->
+</div>
+</div>
+</div>
+<footer>
+<div class="social-icons">
+<a href="#" target="_blank">Facebook</a>
+<a href="#" target="_blank">Instagram</a>
+<!-- Add more social media icons as needed -->
+</div>
+<div class="copyright">
+&copy; 2023 TourCraft. All rights reserved.
+</div>
+</footer>
+
+<script>
+       function bookNow() {
+           var form = document.getElementById("bookingForm");
+           if (form.checkValidity()) {
+               alert("Booking successful!");
+           } else {
+               alert("Please fill in all the fields.");
+           }
+       }
+</script>
+</div>
+</body>
+</html>
